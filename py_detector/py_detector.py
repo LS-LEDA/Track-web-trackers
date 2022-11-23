@@ -1,135 +1,67 @@
 import json
-
-from selenium import webdriver
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+import sys
+import trackers_manager
+import selenium_manager
 
 # Configuration TODO: move to .env file
-HEADLESS = False
-STORE_LOGS = True
-STORE_RESULTS = True
+HEADLESS = True
 
 
-# Enable browser logging
-def init_driver():
-    """ Inicilize the driver and return it """
-    # logs
-    caps = DesiredCapabilities.CHROME
-    caps['goog:loggingPrefs'] = {'performance': 'ALL'}  # type: ignore
+# TODO: Use something more optimized than O(n^2)
+def find_trackers(events):
+    """ Detect the trackers on the site """
+    trackers_list = trackers_manager.get_trackers_from_exodus()
 
-    # headless
-    options = webdriver.ChromeOptions()
-    if (HEADLESS):
-        options.add_argument('--headless')
+    if len(trackers_list) == 0:
+        sys.stderr.write("No trackers found")
+        return None
 
-    # init driver
-    driver = webdriver.Chrome(desired_capabilities=caps, options=options)
-    driver.implicitly_wait(10)
-    return driver
+    trackers_detected = []
 
+    for event in events:
+        for tracker in trackers_list:
+            network_signature = tracker['network_signature'].replace("\\", "")
+            network_signatures = network_signature.split("|")
 
-def close_driver(driver):
-    """ Close the driver """
-    driver.quit()
+            for network_signature in network_signatures:
+                event_url = event['params']['response']['url']
+                if network_signature in event_url and network_signature != "":
+                    found = tracker
+                    found['event_url'] = event_url
+                    trackers_detected.append(found)
+                    """ TODO: Return only relevant information """
 
-
-def process_browser_log_entry(entry):
-    """ Process the browser log entry """
-    response = json.loads(entry['message'])['message']
-    return response
+    return trackers_detected
 
 
-def gtag_tracker(events):
-    """ Check if the page has a gtag tracker """
-    filtered_events = [
-        event for event in events if 'params' in event and 'response' in event['params']]
+def get_events(driver, url):
+    """ Get all events from the url"""
+    try:
+        driver.get(url)
+    except Exception as e:
+        sys.stderr.write("Error getting events: " + str(e))
+        return None
 
-    for event in filtered_events:
-        if 'gtag' in event['params']['response']['url']:
-            return True
-    return False
-
-
-def get_logs(driver):
-    """ Get the browser logs """
-    browser_log = driver.get_log('performance')
-    events = [process_browser_log_entry(entry) for entry in browser_log]
-    events = [event for event in events if 'Network.response' in event['method']]
+    events = selenium_manager.get_filtered_events(driver)
+    selenium_manager.close_driver(driver)
     return events
 
 
-def store_logs(events, url):
-    """ Store the browser logs """
-    with open('logs/' + url.replace('https://', '').replace('http://', '').replace('/', '') + '.json', 'w') as outfile:
-        json.dump(events, outfile, indent=4, sort_keys=True)
+def main():
+    url = sys.argv[1]
 
-
-def search_for_trackers(driver, url):
-    """ Search for trackers in the page """
-    trackers = {}
-
-    try:
-        driver.get(url)
-
-    except Exception as e:
-        trackers['Error'] = "Unable to Analize the page"
-        trackers['Error Message'] = str(e)
-        trackers['e_code'] = 1
-        return trackers
-
-    events = get_logs(driver)
-
-    if (gtag_tracker(events)):
-        trackers['gtag'] = True
-    else:
-        trackers['gtag'] = False
-
-    if (STORE_LOGS):
-        store_logs(events, url)
+    driver = selenium_manager.init_driver(HEADLESS)
+    if driver is None:
+        return
+    events = get_events(driver, url)
+    if events is None:
+        return
+    trackers = find_trackers(events)
+    if trackers is None:
+        return
+    print(json.dumps(trackers, indent=4, sort_keys=True))
 
     return trackers
-
-
-def store_results(trackers, url):
-    """ Store the results on a file """
-    with open('results/' + url.replace('https://', '').replace('http://', '').replace('/', '') + '.json', 'w') as outfile:
-        json.dump(trackers, outfile, indent=4, sort_keys=True)
-
-
-def main():
-    finish = 0
-
-    # TODO: Run the script from a backend
-    while (finish == 0):
-        url = input("Enter URL: ")
-
-        # if url dont has http or https
-        if not (url.startswith('http://') or url.startswith('https://')):
-            url = 'http://' + url
-
-        url = url + '/'
-
-        driver = init_driver()
-        trackers = search_for_trackers(driver, url)
-        close_driver(driver)
-        if (STORE_RESULTS):
-            store_results(trackers, url)
-        print(url + " trackers: " + json.dumps(trackers, indent=4, sort_keys=True))
-
-        finish = -1
-        while (finish == -1):
-            exit_input = input("Exit? (Y/n): ")
-            if (exit_input == 'Y'):
-                finish = 1
-            elif (exit_input == 'y'):
-                finish = 1
-            elif (exit_input == 'N'):
-                finish = 0
-            elif (exit_input == 'n'):
-                finish = 0
-            else:
-                print("Invalid input")
-
-    print("Exiting...")
 
 
 main()
