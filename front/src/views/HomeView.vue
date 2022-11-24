@@ -5,22 +5,17 @@
     </div>
     <div class="search-bar-container">
       <form v-on:submit="searchForTrackers" class="search-bar">
-        <input
-          type="text"
-          placeholder="search tracker"
-          name="urlToAnalyse"
-          id="urlToAnalyse"
-          v-model="urlToAnalyse"
-        />
+        <input type="text" placeholder="search tracker" name="urlToAnalyse" id="urlToAnalyse" v-model="urlToAnalyse" />
         <button type="submit">
-          <img
-            src="https://www.pngall.com/wp-content/uploads/8/Vector-Search.png"
-            alt="search button"
-          />
+          <img src="https://www.pngall.com/wp-content/uploads/8/Vector-Search.png" alt="search button" />
         </button>
       </form>
     </div>
+    <div class="spinner hide" id="spinner">
+      <img src="/loading.gif" alt="loading" />
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -35,28 +30,26 @@ export default {
     };
   },
   methods: {
-    searchForTrackers(e) {
+    fillTrackersList(trackers) {
+      this.trackers = trackers;
+    },
+    async searchForTrackers(e) {
       e.preventDefault();
 
-      if (
-        !this.urlToAnalyse.startsWith("https://") &&
-        !this.urlToAnalyse.startsWith("http://")
-      ) {
-        this.urlToAnalyse = "https://" + this.urlToAnalyse;
-      }
+      const spinner = document.getElementById("spinner");
+      spinner.classList.remove("hide");
+
       const options = {
         method: "GET",
-        url: `http://localhost:4000/trackers/${this.urlToAnalyse}`,
+        url: `${import.meta.env.VITE_TRACKERS_API}${this.urlToAnalyse}`,
       };
 
-      axios
-        .request(options)
-        .then(function (response) {
-          console.log(response.data);
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
+      const data = await axios.request(options);
+      const trackers = data.data;
+      console.log(trackers);
+
+      // hide spinner
+      spinner.classList.add("hide");
     },
   },
 };
@@ -75,13 +68,14 @@ export default {
   min-height: 100vh;
   padding: 10%;
   background-image: linear-gradient(rgb(1, 10, 20), rgba(0, 8, 51, 0.2)),
-    url("https://images.wallpapersden.com/image/download/minimal-glowing-code-binary_a2hrbWWUmZqaraWkpJRnamtlrWZlbWU.jpg");
+    url(/background.jpg);
   background-position: center;
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 1000px; /* Suppose you want minimum width of 1000px */
+  min-width: 1000px;
+  /* Suppose you want minimum width of 1000px */
 }
 
 .title-container {
@@ -106,11 +100,13 @@ export default {
 }
 
 @media screen and (max-width: 1000px) {
+
   .title-container,
   .search-bar-container {
     width: 100%;
     padding: 20px 0px;
   }
+
   .container {
     display: block;
   }
@@ -152,5 +148,9 @@ export default {
   height: 60px;
   background: #58629b;
   cursor: pointer;
+}
+
+.hide {
+  display: none;
 }
 </style>
