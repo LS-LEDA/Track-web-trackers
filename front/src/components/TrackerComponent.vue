@@ -8,7 +8,12 @@
             <div v-for="category in tracker.categories" :key="category">
                 <li>{{ category }}</li>
             </div>
-            <p class="short-url">Event catch: {{ tracker.event_url }}</p>
+
+            <p>On the following requests: </p>
+            <p>Count: {{ tracker.event_url.length }}</p>
+            <div v-for="tracked_url in tracker.event_url" :key="tracked_url">
+                <li class="short-url">{{ tracked_url }}</li>
+            </div>
         </div>
     </div>
 </template>
@@ -20,7 +25,7 @@ export default {
         tracker: {
             categories: Array,
             description: String,
-            event_url: String,
+            event_url: Array,
             name: String,
             website: String,
         }
