@@ -3,55 +3,17 @@
     <div class="title-container">
       <h1 class="header-title">Projecte Web Trackers</h1>
     </div>
-    <div class="search-bar-container">
-      <form v-on:submit="searchForTrackers" class="search-bar">
-        <input type="text" placeholder="search tracker" name="urlToAnalyse" id="urlToAnalyse" v-model="urlToAnalyse" />
-        <button type="submit">
-          <img src="https://www.pngall.com/wp-content/uploads/8/Vector-Search.png" alt="search button" />
-        </button>
-      </form>
-    </div>
-    <div class="spinner hide" id="spinner">
-      <img src="/loading.gif" alt="loading" />
-    </div>
+    <SearchBarComponent />
   </div>
 
 </template>
 
 <script>
-import axios from "axios";
+import SearchBarComponent from "../components/SearchBarComponent.vue";
 
 export default {
   name: "HomeView",
-  components: {},
-  data() {
-    return {
-      urlToAnalyse: null,
-    };
-  },
-  methods: {
-    fillTrackersList(trackers) {
-      this.trackers = trackers;
-    },
-    async searchForTrackers(e) {
-      e.preventDefault();
-
-      const spinner = document.getElementById("spinner");
-      spinner.classList.remove("hide");
-
-      const options = {
-        method: "GET",
-        url: `${import.meta.env.VITE_TRACKERS_API}${this.urlToAnalyse}`,
-      };
-
-      const data = await axios.request(options);
-      const trackers = data.data;
-      console.log(trackers);
-
-      // hide spinner
-      spinner.classList.add("hide");
-    },
-  },
+  components: { SearchBarComponent },
 };
 </script>
 
@@ -92,12 +54,6 @@ export default {
   font-size: max(7vw, 5em, 5rem);
 }
 
-.search-bar-container {
-  float: left;
-  width: 100%;
-  padding-left: 3%;
-  padding-right: 25%;
-}
 
 @media screen and (max-width: 1000px) {
 
@@ -112,34 +68,12 @@ export default {
   }
 }
 
-.search-bar {
-  width: 100%;
-  max-width: max(700px, 5em, 5rem);
-  background: rgba(255, 255, 255, 0.6);
-  display: flex;
-  align-items: center;
-  border-radius: 100px;
-  padding: 5px 10px;
-  backdrop-filter: blur(1px) saturate(180%);
-}
 
-.search-bar input {
-  background: transparent;
-  flex: 1;
-  border: 0;
-  outline: none;
-  padding: 24px 20px;
-  font-size: 20px;
-  color: #000000;
-}
 
 ::placeholder {
   color: #3f3e7a86;
 }
 
-.search-bar button img {
-  width: 25px;
-}
 
 .search-bar button {
   border: 0;
@@ -148,9 +82,5 @@ export default {
   height: 60px;
   background: #58629b;
   cursor: pointer;
-}
-
-.hide {
-  display: none;
 }
 </style>
