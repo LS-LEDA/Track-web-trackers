@@ -26,9 +26,16 @@ def find_trackers(events):
             for network_signature in network_signatures:
                 event_url = event['params']['response']['url']
                 if network_signature in event_url and network_signature != "":
-                    found = tracker
-                    found['event_url'] = event_url
-                    trackers_detected.append(found)
+                    # append the tracker if it's not already in the list
+                    if tracker not in trackers_detected:
+                        found = tracker
+                        tracker['event_url'] = [event_url]
+                        trackers_detected.append(found)
+                    else:
+                        # append the event url to the tracker
+                        trackers_detected[trackers_detected.index(
+                            tracker)]['event_url'].append(event_url)
+
                     """ TODO: Return only relevant information """
 
     return trackers_detected
