@@ -8,6 +8,7 @@
         <h1> Results</h1>
 
         <div v-if="trackers.length > 0">
+            <p>Trackers count: {{ trackers.length }}</p>
             <div v-for="tracker in trackers" :key="tracker.id">
                 <TrackerComponent :tracker="tracker" />
             </div>
