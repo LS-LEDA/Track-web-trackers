@@ -24,7 +24,7 @@ export default {
     methods: {
         navigateToResults(e) {
             e.preventDefault();
-            this.$router.push({ name: "results", params: { url: this.urlToAnalyse } });
+            this.$router.push({ name: "results", params: { url: this.urlToAnalyse.replace(/\./g, '%2E') } });
         },
     },
 }
