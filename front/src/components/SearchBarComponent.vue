@@ -24,7 +24,7 @@ export default {
     methods: {
         navigateToResults(e) {
             e.preventDefault();
-            this.$router.push({ name: "results", params: { url: this.urlToAnalyse } });
+            this.$router.push({ name: "results", params: { url: this.urlToAnalyse.replace(/\./g, '%2E') } });
         },
     },
 }
@@ -33,39 +33,39 @@ export default {
 
 <style scoped>
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
 
 .search-bar-container {
-    float: left;
-    width: 100%;
-    padding-left: 3%;
-    padding-right: 25%;
+    float: center;
 }
 
 
 .search-bar {
-    width: 100%;
-    max-width: max(700px, 5em, 5rem);
+    max-height: 55px;
+    max-width: max(600px, 5em, 5rem);
     background: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
     border-radius: 100px;
-    padding: 5px 10px;
     backdrop-filter: blur(1px) saturate(180%);
+    transition: 0.3s;
+}
+
+.search-bar:hover {
+    background-color: white;
 }
 
 .search-bar input {
-    background: transparent;
+    -webkit-background-composite: clear;
+    background-color: transparent;
     flex: 1;
     border: 0;
     outline: none;
-    padding: 24px 20px;
-    font-size: 20px;
-    color: #000000;
+    padding: 0px 20px;
+    font-size: 17px;
+    color: black;
 }
 
 ::placeholder {
@@ -73,15 +73,25 @@ export default {
 }
 
 .search-bar button img {
-    width: 25px;
+    width: 20px;
+    filter: invert(100%);
 }
 
 .search-bar button {
     border: 0;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    background: #58629b;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(to left top, rgb(59, 130, 246), rgb(147, 51, 234));
     cursor: pointer;
+}
+
+.search-bar button:hover {
+    background: linear-gradient(to left top, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234));
+    transition: all 0.15s ease-out;
+}
+.search-bar button:active{
+    background: linear-gradient(to left top, rgb(134, 239, 172), rgb(59, 130, 246));
+    transition: all 0.15s ease-out;
 }
 </style>
