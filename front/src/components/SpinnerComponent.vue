@@ -1,6 +1,6 @@
 <template>
     <div id="spinner" class="spinner">
-        <img src="/loading.gif" alt="spinner img">
+        <img src="/animat-search-color.gif" alt="spinner img" class="loading-gif">
     </div>
 </template>
 
@@ -21,12 +21,16 @@ export default {
 
 <style scoped>
 .spinner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -50px;
-    margin-left: -50px;
-    width: 100px;
-    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loading-gif {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 250px;
 }
 </style>
