@@ -14,7 +14,7 @@ export const getTrackers: RequestHandler = async (req, res) => {
             }
 
             console.log(`stderr: ${stderr}`);
-            resolve(JSON.parse(stdout));
+            resolve(JSON.parse(stdout || "[]"));
         });
 
     });
