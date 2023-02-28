@@ -6,7 +6,7 @@
         </span>
       </span>
         
-        <h1 class="info-card__title"><p>Projecte Web Trackers</p></h1>
+        <h1 class="info-card__title"><p>Project Web Tracker</p></h1>
         <p class="info-card__description">This is the Web Tracker Project. Type any URL in the search bar to know if the site has any tracker.</p>
     </div>
 </template>
@@ -22,14 +22,14 @@
   z-index: 2;
   position: absolute;
   
-  clip-path: circle(15px at 97% 17%);
+  clip-path: circle(13px at calc(100% - 13px) 13px);
   transition: all ease-in-out .3s;
   background-color:#ffffff;
   
   &__infoicon{
     position:absolute;
-    margin-left: calc(100vw - 1251px);
-    margin-top: 25px;
+    margin-left: calc(100% - 23px);
+    margin-top: calc(1vh - 7px);
     color:#000000;
     transition:ease-out .3s;
   }
@@ -61,7 +61,6 @@
        border-bottom-color: #0099ff;
     }
   }
-  
   &:hover, &:focus{
     clip-path: circle(100%);
     border-radius:20px;
