@@ -62,7 +62,6 @@ button {
 </style>
 
 <script>
-import { trackVForSlotScopes } from '@vue/compiler-core';
 import TrackerComponent from './TrackerComponent.vue';
 
 export default {
