@@ -1,13 +1,13 @@
 <template>
-  <div class="background">
+  <div class="background" >
     <div class="info-box-container" style ="z-index: 2;">
-        <InfoBoxComponent />
+        <InfoBoxComponent style="margin-top: 1vh; margin-right: 0vh;"/>
     </div>
     <div class="container">
       <div class="title-container">
-        <h1 class="header-title">Projecte Web Trackers</h1>
+        <h1 class="header-title" :style="containerSyles">Project Web Tracker</h1>
       </div>
-      <SearchBarComponent/>
+      <SearchBarComponent class="search-bar"/>
     </div>
   </div>
 </template>
@@ -19,42 +19,106 @@ import InfoBoxComponent from "../components/InfoBoxComponent.vue";
 export default {
   name: "HomeView",
   components: { SearchBarComponent, InfoBoxComponent },
+  data() {
+    return {
+      containerSyles: {
+        marginTop: '0'
+      }
+    };
+  },
+  mounted() {
+    window.addEventListener("resize", this.checkWindowSize);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.checkWindowSize);
+  },
+  methods: {
+    checkWindowSize() {
+      if (window.innerHeight >= window.innerWidth) {
+        this.containerSyles = {
+          marginRight: '50vw'
+        };
+      }
+      else {
+        this.containerSyles = {
+          marginTop: '0vh'
+        };
+      }
+    }
+  }
 };
 </script>
 
 <style lang="scss">
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   font-family: 'Trebuchet MS';
 }
 
 .background {
   width: 100%;
   position: fixed;
-  display: grid;
+  z-index: -1;
   min-height: 100vh;
-  background-image: linear-gradient(rgb(1, 10, 20), rgba(0, 8, 51, 0.2)),
-    url(./background.jpg);
+  background:conic-gradient(at right center, rgb(107, 122, 146), rgb(16, 27, 53), rgb(0, 0, 0));
   background-position: center;
   background-size: cover;
 }
 
 .container {
-  height: 15%;
-  padding-left: 5%;
+  position: relative;
+  display: grid;
+  z-index: 1;
+}
+
+.search-bar-container {
+  display:inline-block;
+  height: auto;
+  margin-left: auto ;
+  margin-right: auto;
+  margin-top: calc(50vh - 25px);
+  margin-bottom: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-container {
+  margin-left: calc(50vw - 500px);
+  margin-top: calc(50vh - 12.5vw);
+  position: absolute;
+  animation: nav-load 0.4s ease-in-out;
+}
+
+.header-title {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  font-size: max(8vw, 5em, 5rem);
+  transition: 0.3s;
+  font-family: 'Trebuchet MS';
+  font-weight: bold;
+  text-shadow: 10px;
+}
+
+.info-box-container {
+  position: inherit;
+  z-index: 2;
+}
+
+/*
+.container {
+  height: auto;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 1000px 5.5em;
   z-index: 1;
-  /* Suppose you want minimum width of 1000px */
 }
 
 .info-box-container {
+  margin-top: 30px;
   height: min-content;
   float: right;
+  position: absolute;
 }
 
 @keyframes nav-load {
@@ -82,6 +146,8 @@ export default {
 
 .title-container {
   align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
   position:relative;
   min-width: 100px;
   float: right;
@@ -89,10 +155,13 @@ export default {
   animation: nav-load 0.4s ease-in-out;
   z-index: 1;
 }
+
 .search-bar-container {
   opacity: 0;
+  width: 50%;
   position: relative;
-  margin-left: 7%;
+  margin: 0 auto;
+  align-self:inherit;
   animation: search-bar-container-load 300ms ease-in 100ms;
   animation-fill-mode: forwards;
 }
@@ -112,7 +181,7 @@ export default {
   color: white;
 }
 
-
+/*
 @media screen and (max-width: 1000px) {
   .background {
     position: fixed;
@@ -196,34 +265,34 @@ export default {
         line-height: 1.6em;
       }
       &__reference{
-    display:inline-block;
-    
-    border-bottom: 1px solid transparent;
-    color:#0099ff;
-    text-decoration:none;
-    transition: ease-in .3s;
-    &:hover{
-       border-bottom-color: #0099ff;
-    }
-  }
-  
-  &:hover, &:focus{
-    clip-path: circle(100%);
-    border-radius:20px;
-    box-shadow: 0px 3px 9px rgba(0,0,0,0.12),
-                0px 3px 18px rgba(0,0,0,0.08);
-    background:#ffffff;
-    
-    outline:none;
-    .info-card__infoicon{
-      opacity: 0;
-    }
-  }
-  &:focus{
-    box-shadow: 0px 3px 9px rgba(0,0,0,0.12), 
-                0px 3px 18px rgba(0,0,0,0.08), 
-                0px 0px 0px 4px rgba(0,0,0,0.2);
-  }
+        display:inline-block;
+        
+        border-bottom: 1px solid transparent;
+        color:#0099ff;
+        text-decoration:none;
+        transition: ease-in .3s;
+        &:hover{
+          border-bottom-color: #0099ff;
+        }
+      }
+      
+      &:hover, &:focus{
+        clip-path: circle(100%);
+        border-radius:20px;
+        box-shadow: 0px 3px 9px rgba(0,0,0,0.12),
+                    0px 3px 18px rgba(0,0,0,0.08);
+        background:#ffffff;
+        
+        outline:none;
+        .info-card__infoicon{
+          opacity: 0;
+        }
+      }
+      &:focus{
+        box-shadow: 0px 3px 9px rgba(0,0,0,0.12), 
+                    0px 3px 18px rgba(0,0,0,0.08), 
+                    0px 0px 0px 4px rgba(0,0,0,0.2);
+      }
     }
   }
 
@@ -231,8 +300,8 @@ export default {
 ::placeholder {
   color: #3f3e7a86;
 }
-
-
+*/
+/*
 .search-bar button {
   border: 0;
   border-radius: 50%;
@@ -242,5 +311,5 @@ export default {
   cursor: pointer;
   transition: 0.3;
 }
-
+*/
 </style>

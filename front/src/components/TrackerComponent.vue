@@ -22,12 +22,15 @@
 
                 <div v-for="category in tracker.categories" :key="category">
                     <ul class="category-container">
-                        <!--div v-if="category == null">
+                    <div v-if="category != null">
                             <li><p style="font-weight: bold;">Categories:</p></li>
-                            <li><p style="font-weight: lighter;"> no categories found</p></li>
-                        </div-->
-                        <li><p style="font-weight: bold;">Categories:</p></li>
                         <li><p style="font-weight: lighter;">{{ category }}</p></li>
+                    </div>
+                    <div v-else>
+                        <li><p style="font-weight: bold;">Categories:</p></li>
+                        <li><p style="font-weight: lighter;"> no categories found</p></li>
+                    </div>
+                        
                     </ul>
                 </div>
                 
@@ -98,18 +101,22 @@ export default {
 
 .btn-mr {
     display: inline-block;
-    font-size: auto;
+    background-color: transparent;
+    width: 41.5%;
+    padding-right: 5px;
+    padding: 0%;
+    font-size: 15px;
     font-weight: normal;
-    color: white;
-    background-color: #0072c6;
+    color: black;
     border: none;
+    box-shadow: none;
     border-radius: 10px;
-    padding: 1px 16px;
     transition:  0.3s ease-in-out;
 }
 
 .btn-mr:hover {
     background-color: #0065b3;
+    color: white;
 }
 
 .btn-mr:active {
