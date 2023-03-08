@@ -17,8 +17,7 @@ export default {
 
 <style scoped>
 .header {
-    background-image: linear-gradient(rgb(1, 10, 20), rgba(0, 8, 51, 0.2)),
-    url(/background.jpg);
+    background-image: conic-gradient(at right center, rgb(183, 199, 226), rgb(24, 42, 87),rgb(17, 35, 78));
     height: 80px;
     width: 100%;
     display: flex;
@@ -37,8 +36,7 @@ export default {
     margin-bottom: auto;
 }
 .toggle-container {
-    margin: 10px 10px 10px;
-    margin-right: 20px;
+    float: left;
     margin-top: auto;
     margin-bottom: auto;
 }

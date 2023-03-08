@@ -22,15 +22,17 @@ button {
     display: block;
     box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
     cursor: pointer;
+    border: 0;
 }
 
 .btn-dark {
     position: relative;
     text-align: center;
-    font-size: 13px;
+    font-size: 10px;
     display: inline-block;
     width: 30px;
     height: 30px;
+    box-shadow: none;
     border-radius: 20px;
     background: transparent;
     color: white;
@@ -39,18 +41,20 @@ button {
 .btn-light {
     position: relative;
     text-align: center;
-    font-size: 13px;
+    font-size: 12px;
+    padding-left: 5px;
     width: 30px;
     height: 30px;
+    box-shadow: none;
     border-radius: 20px;
     background: transparent;   
 }
 
 .btn-light:hover, .btn-dark:hover {
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     height: 40px;
     color: black;
-    transition: 0.3s ease-in-out;
+    transition: 0.4s ease-in-out;
 }
 
 .emoji {
@@ -68,8 +72,14 @@ export default {
     name: "ThemeToggleComponent",
     methods: {
         setDark(){
+            if (document.getElementsByClassName("card").length > 0 ) {
+                document.getElementById("img-download").style.filter = "invert(100%)";//------------------------------
+            }
             document.body.style.background = 'rgb(38, 38, 38)';
             document.body.style.transition = '0.15s';
+            document.getElementById("header").style.transition = '0.3s';
+            document.getElementById("header").style.backgroundImage = "conic-gradient(at right center, rgb(189, 193, 201), rgb(10, 25, 61),rgb(0, 0, 0))";
+
             //document.getElementById("tf").style.color = 'white';
             const pgText = document.getElementsByTagName("p");
             for (let i=0;i<pgText.length; i++) {
@@ -84,12 +94,16 @@ export default {
             document.getElementById("ic").style.background = 'rgb(38, 38, 38)';
             document.getElementById("ic").style.transition = '0.15s';
             document.getElementById("info-icon").style.filter = "invert(100%)";
-            document.getElementById("img-download").style.filter = "invert(100%)";
             console.log("Botó apretat");
+
         },
         setLight() {
             document.body.style.background = 'white';
-            document.getElementById("tf").style.color= 'black';
+            if (document.getElementsByClassName("card").length > 0 ) {
+                document.getElementById("tf").style.color= 'black';
+                document.getElementById("img-download").style.filter = "invert(0%)";
+            }
+            document.getElementById("header").style.backgroundImage = "conic-gradient(at right center, rgb(183, 199, 226), rgb(47, 75, 146),rgb(17, 35, 78))";
             const cards = document.getElementsByClassName("card");
             for (let i=0; i<cards.length; i++) {
                 cards[i].style.background = 'white';
@@ -103,8 +117,8 @@ export default {
             document.getElementById("ic").style.background = 'white';
             document.getElementById("ic").style.transition = '0.15s';
             document.getElementById("info-icon").style.filter = "invert(0%)";
-            document.getElementById("img-download").style.filter = "invert(0%)";
-            document.getElementById("nt").style.color= 'black';
+
+            
 
         }
     }
