@@ -15,7 +15,7 @@
                     </li>
                 </ul>
                 <ul class="btn-download-js-container">
-                    <button v-on:click="DJpressed" id="btn-download-js">
+                    <button v-on:click="DJpressed(trackers)" id="btn-download-js">
                         <div id="img-download"></div>
                         <p class="hover-text">Download JSON</p>
                     </button>
@@ -64,8 +64,17 @@ export default {
             }
         },
         DJpressed() {
+            const trackers = this.trackers;
             document.getElementById("btn-download-js").addEventListener("click", function () {
                 document.getElementById("btn-download-js").classList.add("press_download");
+                const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(trackers));
+                const downloadAnchorNode = document.createElement('a');
+                downloadAnchorNode.setAttribute("href", dataStr);
+                downloadAnchorNode.setAttribute("download", "trackers.json");
+                document.body.appendChild(downloadAnchorNode); // required for firefox
+                downloadAnchorNode.click();
+                downloadAnchorNode.remove();
+                document.getElementById("btn-download-js").classList.remove("press_download");
             });
         }
     },

@@ -10,12 +10,12 @@
                             <div class="img-home"></div>
                         </a>
                     </button>
-                    <button id="btn-2" class="btn-child">
+                    <button id="btn-2" class="btn-child" v-on:click="shareTracker">
                         <a v-bind:href="tracker.description" target="_blank">
                             <div class="img-send"></div>
                         </a>
                     </button>
-                    <button id="btn-download" class="btn-child">
+                    <button id="btn-download" class="btn-child" v-on:click="downloadTracker">
                         <div class="img-download"></div>
                     </button>
                 </div>
@@ -87,6 +87,24 @@ export default {
                 logoURL = '/google.png'
             }
             return logoURL;
+        },
+
+        shareTracker() {
+            let url = window.location.href;
+            navigator.clipboard.writeText(url);
+            alert("URL on your clipboard to share it!")
+            return false;
+        },
+
+        downloadTracker() {
+            const tracker = this.tracker;
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tracker));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "tracker.json");
+            document.body.appendChild(downloadAnchorNode); // required for firefox
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
         }
     }
 }
