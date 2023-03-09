@@ -1,15 +1,18 @@
 <template>
     <div class="main-container" style="z-index:1">
-        <HeaderComponent id="header"/>
-        
-        <InfoBoxComponent class="info-box-container" style="z-index: 2; position: absolute"/>
+        <HeaderComponent id="header" />
+
+        <InfoBoxComponent class="info-box-container" style="z-index: 2; position: absolute" />
         <SpinnerComponent id="spinner" />
         <div id="content" class="content-container" style="z-index:1; position: relative;">
-            <!--h1 class="results-title" style="z-index:1;"> Results</h1-->
             <div v-if="trackers.length > 0" style="z-index:1;">
                 <ul class="results">
-                    <li><p id="tf" class="results-title">Trackers found: </p></li>
-                    <li><p class="trackers-found"> {{ trackers.length }}</p></li>
+                    <li>
+                        <p id="tf" class="results-title">Trackers found: </p>
+                    </li>
+                    <li>
+                        <p class="trackers-found"> {{ trackers.length }}</p>
+                    </li>
                 </ul>
                 <ul class="btn-download-js-container">
                     <button v-on:click="DJpressed" id="btn-download-js">
@@ -19,7 +22,7 @@
                 </ul>
                 <div class="cards-container">
                     <div v-for="tracker in trackers" :key="tracker.id" style="z-index:1;">
-                        <TrackerComponent :tracker="tracker" class="card"/>
+                        <TrackerComponent :tracker="tracker" class="card" />
                     </div>
                 </div>
             </div>
@@ -50,19 +53,18 @@ export default {
         }
     },
 
-    methods : {
-        showCrads : function() {
-        var cards = document.getElementsByClassName("card");
-        var delay = 0;
+    methods: {
+        showCrads: function () {
+            let cards = document.getElementsByClassName("card");
 
-        for (var i = 0; i < cards.length; i++) {
-            cards[i].style.position = "absolute";
-            cards[i].style.bottom = "-100px";
-            cards[i].style.transition = "all 0.2s ease-in-out";
-        }
+            for (const card of cards) {
+                card.style.position = "absolute";
+                card.style.bottom = "-100px";
+                card.style.transition = "all 0.2s ease-in-out";
+            }
         },
         DJpressed() {
-            document.getElementById("btn-download-js").addEventListener("click", function() {
+            document.getElementById("btn-download-js").addEventListener("click", function () {
                 document.getElementById("btn-download-js").classList.add("press_download");
             });
         }
@@ -105,11 +107,6 @@ export default {
         }
     }
 }
-
-/**Toggle Theme*/
-const body = document.querySelector("body");
-const sunIcon = document.querySelector(".toggle .bxs-sun");
-const moonIcon = document.querySelector(".toggle .bx-moon");
 </script>
 
 <style lang="scss">
@@ -120,47 +117,53 @@ const moonIcon = document.querySelector(".toggle .bx-moon");
 #nt {
     margin-top: 30vh;
 }
+
 .btn-download-js-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 30px;
     margin-left: 35px;
+
     &:active {
         transform: scale(.96);
         animation: press_download 0.2 1 linear;
     }
 }
+
 @keyframes press_download {
     50% {
-    transform: rotate(0deg) translate(-100px, 500px);
-  }
-  to {
-    transform: scale(0.9) rotate(0deg) translate(-100px, 500px);
-    opacity: 0;
-  }
+        transform: rotate(0deg) translate(-100px, 500px);
+    }
+
+    to {
+        transform: scale(0.9) rotate(0deg) translate(-100px, 500px);
+        opacity: 0;
+    }
 }
 
 .hover-text {
     visibility: hidden;
     opacity: 0;
 }
+
 #btn-download-js {
     display: flex;
     position: absolute;
     align-items: center;
-    width:35px;
-    height:35px;
+    width: 35px;
+    height: 35px;
     border: none;
     padding-left: 10px;
-    border-radius:35px;
-    background:var(--background);
-    box-shadow:0 0 1rem -.25rem rgba(0, 0, 0, 0.475);
-    color:var(--text);
+    border-radius: 35px;
+    background: var(--background);
+    box-shadow: 0 0 1rem -.25rem rgba(0, 0, 0, 0.475);
+    color: var(--text);
     transform: translate(-50%, -50%);
     cursor: pointer;
     text-align: center;
     transition: 0.2s cubic-bezier(0.25, 0, 0, 1);
+
     #img-download {
         position: fixed;
         background-image: url(/download.svg);
@@ -168,14 +171,17 @@ const moonIcon = document.querySelector(".toggle .bx-moon");
         width: 13px;
         visibility: visible;
         opacity: 1;
+
         &:hover {
             filter: invert(70%);
         }
+
         &:active {
             animation: press_download 0.2 linear;
         }
     }
-    &:hover{
+
+    &:hover {
         width: 150px;
         margin-left: 120px;
         color: black;
@@ -184,6 +190,7 @@ const moonIcon = document.querySelector(".toggle .bx-moon");
         stroke-dasharray: 100, 500;
         stroke-dashoffset: 0;
     }
+
     &:hover .hover-text {
         margin-left: 23px;
         visibility: visible;
@@ -193,22 +200,23 @@ const moonIcon = document.querySelector(".toggle .bx-moon");
     }
 }
 
-
-
 .main-conatiner {
     position: absolute;
 }
+
 .card {
     transform: translateY(10px);
     transition: all 0.3s ease-in-out;
 }
+
 .results {
     align-items: center;
     text-align: center;
     margin-bottom: 10px;
     animation: title-load 0.35s ease-out;
 }
-.results li{
+
+.results li {
     display: inline-block;
     padding-right: 5px;
 }
@@ -224,10 +232,12 @@ const moonIcon = document.querySelector(".toggle .bx-moon");
     0% {
         margin-right: 100%;
     }
+
     100% {
         margin-right: 0%;
     }
 }
+
 .results-title {
     margin-bottom: 20px;
     text-align: center;
@@ -247,8 +257,8 @@ const moonIcon = document.querySelector(".toggle .bx-moon");
 }
 
 .cards-container {
-    margin-left:50px;
-    margin-right:50px;
+    margin-left: 50px;
+    margin-right: 50px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -258,7 +268,7 @@ const moonIcon = document.querySelector(".toggle .bx-moon");
     justify-content: center;
 }
 
-.cards-container:hover > .cards-container {
+.cards-container:hover>.cards-container {
     opacity: 0.8;
     filter: blur(10px);
 }
@@ -285,8 +295,7 @@ const moonIcon = document.querySelector(".toggle .bx-moon");
     margin-left: calc(100vw - 730px);
 }
 
-#ic:hover > .content-container {
+#ic:hover>.content-container {
     filter: blur(10px);
 }
-
 </style>

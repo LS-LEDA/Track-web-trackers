@@ -18,7 +18,6 @@ export default {
 }
 </script>
 
-
 <style scoped>
 .spinner {
     margin-left: auto;

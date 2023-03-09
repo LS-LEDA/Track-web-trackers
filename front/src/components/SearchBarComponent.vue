@@ -1,8 +1,7 @@
 <template>
     <div class="search-bar-container">
         <form v-on:submit="navigateToResults" class="search-bar">
-            <input type="text" placeholder="search site" name="urlToAnalyse" id="urlToAnalyse"
-                v-model="urlToAnalyse" />
+            <input type="text" placeholder="search site" name="urlToAnalyse" id="urlToAnalyse" v-model="urlToAnalyse" />
             <button type="submit">
                 <img src="https://www.pngall.com/wp-content/uploads/8/Vector-Search.png" alt="search button" />
             </button>
@@ -30,13 +29,11 @@ export default {
 }
 </script>
 
-
 <style lang="scss">
 * {
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
-
 
 .search-bar {
     max-height: 55px;
@@ -76,9 +73,10 @@ export default {
     filter: invert(100%);
 }
 
-.search-bar input:focus > .search-bar {
+.search-bar input:focus>.search-bar {
     width: 500px;
 }
+
 .search-bar button {
     border: 0;
     display: block;
@@ -90,7 +88,7 @@ export default {
     cursor: pointer;
 }
 
-.search-bar button > img {
+.search-bar button>img {
     filter: invert(30%);
 }
 
@@ -99,11 +97,11 @@ export default {
     transition: 0.55s;
 }
 
-.search-bar button:hover > img {
+.search-bar button:hover>img {
     filter: invert(1);
 }
 
-.search-bar button:active{
+.search-bar button:active {
     background: linear-gradient(to left top, rgb(134, 239, 172), rgb(59, 130, 246));
 }
 </style>
