@@ -1,5 +1,10 @@
 <template>
     <div class="header">
+        <div class="icon-container">
+            <router-link to="/">
+                <img src="/icon.png" alt="logo" />
+            </router-link>
+        </div>
         <SearchBarComponent />
         <div class="toggle-container">
             <ThemeToggleComponent />
@@ -17,6 +22,21 @@ export default {
 </script>
 
 <style scoped>
+.icon-container {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.icon-container img {
+    width: 100%
+}
+
 .header {
     background-image: conic-gradient(at right center, rgb(183, 199, 226), rgb(24, 42, 87), rgb(17, 35, 78));
     height: 80px;
