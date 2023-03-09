@@ -5,8 +5,8 @@
                 <img src="/icon.png" alt="logo" />
             </router-link>
         </div>
-        <SearchBarComponent />
-        <div class="toggle-container">
+        <SearchBarComponent v-if="showSearch == true" />
+        <div class=" toggle-container">
             <ThemeToggleComponent />
         </div>
     </div>
@@ -18,6 +18,12 @@ import ThemeToggleComponent from './ThemeToggleComponent.vue'
 export default {
     name: "Header",
     components: { SearchBarComponent, ThemeToggleComponent },
+    props: {
+        showSearch: {
+            type: Boolean,
+            default: true
+        }
+    },
 }
 </script>
 

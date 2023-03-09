@@ -7,17 +7,56 @@
     </span>
 
     <h1 class="info-card__title">
-      <p>Project Web Tracker</p>
+      <div class="title-button">
+        <p>Project Web Tracker</p>
+        <button class="btn-about" v-on:click="about">About</button>
+
+      </div>
     </h1>
     <p class="info-card__description">This is the Web Tracker Project. Type any URL in the search bar to know if the site
       has any tracker.</p>
   </div>
 </template>
 
+<script>
+export default {
+  name: "InfoBoxComponent",
+  methods: {
+    about() {
+      this.$router.push('/about');
+    }
+  }
+}
+</script>
+
 <style lang="scss">
 * {
   z-index: 2;
   box-sizing: border-box;
+}
+
+.title-button {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.btn-about {
+  background-color: #4CAF50;
+  border-radius: 5px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-about:hover {
+  background-color: #3e8e41;
 }
 
 .info-card {
