@@ -1,10 +1,12 @@
 # LS-web-trackers
 
-The project is an user rights of control initiative to expose web trackers and raise awareness regarding automatic data collection.
+The project is an user rights of control initiative as part of the Erasmus+ project Security and Privacy in Academic Data management at Schools (SPADATAS). Website [spadatas.eu](https://spadatas.eu). Grant ref. 2022-1-ES01-KA220-SCH-000086363
+
+The main objective of the Track-web-trackers project is to expose web trackers and raise awareness regarding automatic data collection.
 
 The Internet has become, against the user community's desire, a capitalist surveillance digital space with no privacy and merci. Websites use cookies, third-party APIs, and other techy mechanisms to collect different kinds of data from Internet users for economic purposes. These data collectors transform data into users' behaviors and habits, which are fully observed and aggregated through code snippets hidden among websites' code. These third-party actors are considered 'trackers' and allow user profiling to display targeted advertising and sell behavioral profiles to multiple companies for purposes that violate community rights. Transparency is required regarding the use of trackers so that users gain awareness about who is taking data from them on a website and thus make better-informed decisions to avoid surveillance mechanisms. Hence, Internet users need tools to protect themselves from trackers. The project aims to help build a more transparent Internet by exposing web trackers behind websites in conjunction with the participation of the community.
 
-This is an open source project developed in La Salle URL - Human-Environment Research group, Technology Enhanced Learning research line leadered by Daniel Amo-Filva. 
+This is an open source project developed in La Salle URL - Human-Environment Research group, Technology Enhanced Learning research line leadered by [Dr. Daniel Amo-Filva](https://scholar.google.com/citations?user=RNHbv9oAAAAJ&hl=es&oi=ao).
 
 ## Dependencies
 ### Frontend
