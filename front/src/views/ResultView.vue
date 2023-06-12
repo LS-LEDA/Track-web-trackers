@@ -2,7 +2,6 @@
     <div class="main-container" style="z-index:1">
         <HeaderComponent id="header" />
 
-        <InfoBoxComponent class="info-box-container" style="z-index: 2; position: absolute" />
         <SpinnerComponent id="spinner" />
         <div id="content" class="content-container" style="z-index:1; position: relative;">
             <div v-if="trackers.length > 0" style="z-index:1;">
@@ -135,7 +134,6 @@ export default {
     margin-left: 35px;
 
     &:active {
-        transform: scale(.96);
         animation: press_download 0.2 1 linear;
     }
 }
@@ -146,7 +144,7 @@ export default {
     }
 
     to {
-        transform: scale(0.9) rotate(0deg) translate(-100px, 500px);
+        transform: rotate(0deg) translate(-100px, 500px);
         opacity: 0;
     }
 }
@@ -279,17 +277,14 @@ export default {
 
 .cards-container:hover>.cards-container {
     opacity: 0.8;
-    filter: blur(10px);
 }
 
 .content-container:hover .card {
     opacity: 0.8;
-    filter: blur(5px);
 }
 
 .content-container .card:hover {
     opacity: 1;
-    filter: blur(0px);
 }
 
 .content-container {
@@ -304,7 +299,5 @@ export default {
     margin-left: calc(100vw - 730px);
 }
 
-#ic:hover>.content-container {
-    filter: blur(10px);
-}
+#ic:hover>.content-container {}
 </style>

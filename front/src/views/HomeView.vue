@@ -64,7 +64,6 @@ export default {
 
 .component {
   margin: auto;
-  padding: 10px;
   margin-top: 10em;
   width: 50%;
 }
@@ -105,6 +104,7 @@ export default {
   font-family: 'Trebuchet MS';
   font-weight: bold;
   text-shadow: 10px;
+  line-height: 1.3;
 }
 
 .info-box-container {
@@ -142,11 +142,14 @@ export default {
 
 @media only screen and (max-width: 790px) {
   .title-grid {
+    grid-template-columns: 1fr;
     grid-template-areas:
       "top"
       "middle-left"
       "bottom"
-      "middle-right"
+      "middle-right";
+    width: fit-content;
+    margin: auto;
   }
 
   .component {
