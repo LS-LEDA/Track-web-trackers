@@ -1,5 +1,9 @@
 <template>
-  <div id="ic" class="info-card" tabindex="0">
+  <button id="btn-info" class="btn-info" v-on:click="about">
+    <img src=" https://img.icons8.com/ios-glyphs/512/information.png" style="width:20px">
+  </button>
+  <!-- TODO: Fix it to make it responsive
+    <div id="ic" class="info-card" tabindex="0">
     <span class="info-card-wrap">
       <span class="info-card__infoicon">
         <img id="info-icon" src="https://img.icons8.com/ios-glyphs/512/information.png" style="width:20px">
@@ -16,6 +20,7 @@
     <p class="info-card__description">This is the Web Tracker Project. Type any URL in the search bar to know if the site
       has any tracker.</p>
   </div>
+-->
 </template>
 
 <script>
@@ -53,6 +58,7 @@ export default {
   cursor: pointer;
   color: white;
   font-weight: bold;
+  box-shadow: none;
 }
 
 .btn-about:hover {
@@ -122,5 +128,12 @@ export default {
       0px 3px 18px rgba(0, 0, 0, 0.08),
       0px 0px 0px 4px rgba(0, 0, 0, 0.2);
   }
+}
+
+.btn-info {
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  box-shadow: none;
 }
 </style>

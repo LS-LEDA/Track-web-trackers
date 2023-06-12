@@ -38,7 +38,6 @@ export default {
 .search-bar {
     max-height: 55px;
     max-width: max(600px, 5em, 5rem);
-    width: 400px;
     background: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
@@ -49,7 +48,6 @@ export default {
 
 .search-bar:hover {
     background-color: white;
-    width: 410px;
 }
 
 

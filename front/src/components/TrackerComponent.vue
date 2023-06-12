@@ -46,14 +46,16 @@
                     </ul>
                 </div>
 
-                <button v-on:click="showMore = !showMore" class="btn-mr">On the following requests: </button>
+                <button v-on:click="showMore = !showMore" class="btn-mr btn-rq">Show requests identified</button>
                 <div v-if="showMore" :class="{ 'show': showMore }">
-                    <p>Count: {{ tracker.event_url.length }}</p>
+                    <p style="font-family: 'Trebuchet MS';">Number of requests: {{ tracker.event_url.length }}</p>
                     <div v-for="tracked_url in tracker.event_url" :key="tracked_url">
                         <li class="short-url">
-                            <p>{{ tracked_url }}</p>
+                            <lu>{{ tracked_url }}</lu>
                         </li>
                     </div>
+                    <a v-on:click="downloadTracker" style="display: flex; justify-content: center;">Download to see full
+                        info</a>
                 </div>
             </div>
         </body>
@@ -153,13 +155,11 @@ export default {
     0% {
         margin-top: 100%;
         opacity: 0;
-        transform: scale(0);
     }
 
     100% {
         margin-top: 0;
         opacity: 1;
-        transform: scale(1);
     }
 }
 
@@ -255,7 +255,6 @@ export default {
     animation: cards-load 0.4s ease-out;
 
     &:hover {
-        transform: scale(1.05);
         box-shadow: 0px 0px 40px -17px rgba(0, 0, 0, 0.62);
         transition: 0.15s;
     }
@@ -384,6 +383,10 @@ export default {
         flex: 1 0 calc(50% - 20px);
         transition: 0.2s;
     }
+
+    .card {
+        width: auto
+    }
 }
 
 /* Responsive layout for screens smaller than 600px */
@@ -392,5 +395,16 @@ export default {
         flex: 1 0 100%;
         transition: 0.2s;
     }
+}
+
+.btn-rq {
+    margin: auto;
+    color: white;
+    background: #7ba8d4;
+    padding: 10px;
+}
+
+.btn-rq:hover {
+    background: #0065b3;
 }
 </style>

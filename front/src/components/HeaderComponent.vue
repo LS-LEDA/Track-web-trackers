@@ -51,6 +51,23 @@ export default {
     align-items: initial;
 }
 
+@media screen and (max-width: 800px) {
+    .header {
+        background-image: none;
+        background: rgb(24, 42, 87);
+        padding-left: 25px;
+    }
+
+    .icon-container {
+        display: none;
+    }
+
+    .toggle-container {
+        display: none;
+
+    }
+}
+
 .search-bar-container {
     margin-top: auto;
     margin-bottom: auto;
