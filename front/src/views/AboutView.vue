@@ -2,10 +2,27 @@
     <HeaderComponent id="header" showSearch="false" />
     <div class="background">
         <div class="container">
-            <h1 class="header-title heading-1"> About </h1>
+            <h1 class="header-title-2 heading-1"> About </h1>
             <br>
-            <p>The project is an user rights of control initiative to expose web trackers and raise awareness regarding
-                automatic data collection.</p>
+            <p>The project is an user rights of control initiative as part of the Erasmus+ project Security and Privacy in
+                Academic Data management at Schools (SPADATAS). Website <a href="spadatas.eu"
+                    target="_blank">spadatas.eu</a>. Grant ref.
+                2022-1-ES01-KA220-SCH-000086363
+
+                The main objective of the Track-web-trackers project is to expose web trackers and raise awareness regarding
+                automatic data collection.
+
+                The Internet has become, against the user community's desire, a capitalist surveillance digital space with
+                no privacy and merci. Websites use cookies, third-party APIs, and other techy mechanisms to collect
+                different kinds of data from Internet users for economic purposes. These data collectors transform data into
+                users' behaviors and habits, which are fully observed and aggregated through code snippets hidden among
+                websites' code. These third-party actors are considered 'trackers' and allow user profiling to display
+                targeted advertising and sell behavioral profiles to multiple companies for purposes that violate community
+                rights. Transparency is required regarding the use of trackers so that users gain awareness about who is
+                taking data from them on a website and thus make better-informed decisions to avoid surveillance mechanisms.
+                Hence, Internet users need tools to protect themselves from trackers. The project aims to help build a more
+                transparent Internet by exposing web trackers behind websites in conjunction with the participation of the
+                community.</p>
 
             <p>This is an open source project developed in La Salle URL - Human-Environment Research group, Technology
                 Enhanced Learning research line leadered by Daniel Amo Filva. </p>
@@ -48,7 +65,7 @@
         </div>
     </div>
 </template>
-  
+
 <script>
 import HeaderComponent from "../components/HeaderComponent.vue";
 
@@ -83,7 +100,7 @@ export default {
     }
 };
 </script>
-  
+
 <style lang="scss">
 * {
     font-family: 'Trebuchet MS', sans-serif;
@@ -114,31 +131,76 @@ export default {
 
 .background {
     width: 100%;
-    position: fixed;
+    position: absolute;
     z-index: -1;
     min-height: 100vh;
     background: conic-gradient(at right center, rgb(107, 122, 146), rgb(16, 27, 53), rgb(0, 0, 0));
     background-position: center;
     background-size: cover;
     scroll-behavior: smooth;
+    padding-bottom: 50px;
 }
 
-.container {
-    z-index: 1;
-    color: white;
-    font-family: 'Trebuchet MS';
-    margin: auto;
-    width: 70%;
-    padding: 10px;
-}
-
-
-.header-title {
+.header-title-2 {
     color: rgb(255, 255, 255);
     transition: 0.3s;
     font-family: 'Trebuchet MS';
     font-weight: bold;
     text-shadow: 10px;
+    font-size: max(6vw, 3em, 3rem);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: white;
+    line-height: 2;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+li {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+a {
+    color: #6fa1ff;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #fff;
+    background-color: #6fa1ff;
 }
 </style>
-  
