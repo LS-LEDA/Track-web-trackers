@@ -62,6 +62,14 @@
 
             <p>Thank you for using Track Web Trackers!</p>
             <a class="link-about" href="https://github.com/LS-LEDA/Track-web-trackers">Github</a>
+
+            <h2 class="heading2">SPADATAS</h2>
+            <p>
+                The SPADATAS project (Ref.: 2022-1-ES01-KA220-SCH-000086363) is co-financed by the Erasmus+ program of the
+                European Union. The content of this publicacion is the sole responsibility of the consortium and neither the
+                European Commission, nor the Spanish Service for the Internationalization of Education (SEPIE) are
+                responsible for the use that may be made of the information disclosed here.
+            </p>
         </div>
     </div>
 </template>
