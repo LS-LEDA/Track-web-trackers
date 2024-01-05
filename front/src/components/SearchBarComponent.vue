@@ -41,11 +41,6 @@ export default {
     --placeholderColor: #000000;
     --inputColor: #000000;
 
-    --barMinHeight: 40px;
-    --barMaxHeight: 45px;
-    --barWidth: 400px;
-    --fontSize: 16px;
-
     --transitionColor: 0.3s;
     --transitionScale: 0.1s;
 }
@@ -69,14 +64,16 @@ export default {
 
 
 #search-bar {
-    max-height: var(--barMaxHeight);
-    min-height: var(--barMinHeight);
-    height: var(--barMinHeight);
-    width: var(--barWidth);
+    max-height: 35px;
+    min-height: 35px;
+    max-width: 400px;
+    min-width: 400px;
+    height: 35px;
+    width: 400px;
     background: var(--searchBarColor);
     display: flex;
     align-items: center;
-    border-radius: var(--barWidth);
+    border-radius: 20px;
     backdrop-filter: blur(1px) saturate(180%);
     transition: var(--transitionColor);
 
@@ -102,18 +99,19 @@ export default {
 
     button {
         height: 35px;
-        width: 50px;
+        width: 35px;
         background: transparent;
         box-shadow: none;
         border-radius: 50%;
+        margin-left: auto;
 
         &:hover img{
-            transform: scale(1.5);
+            transform: scale(1.2);
             transition: var(--transitionScale);
         }
         
         img {
-            height: calc( var(--barMinHeight) / 2 );
+            height: 20px;
             filter: invert(30%);
         }
 
