@@ -18,7 +18,8 @@ def init_driver(headless: bool):
     # do not print logs
     options.add_argument('--log-level=4')
 
-    driver = webdriver.Chrome(desired_capabilities=caps, options=options)
+    # driver = webdriver.Chrome(desired_capabilities=caps, options=options)
+    driver = webdriver.Chrome(options=options)
     driver.implicitly_wait(10)
     return driver
 

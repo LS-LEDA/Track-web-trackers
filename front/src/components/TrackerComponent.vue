@@ -23,12 +23,12 @@
                 <div v-for="category in tracker.categories" :key="category">
                     <ul class="category-container">
                     <div v-if="category != null">
-                            <li><p style="font-weight: bold;">Categories:</p></li>
+                        <li><p style="font-weight: bold;">Categories:</p></li>
                         <li><p style="font-weight: lighter;">{{ category }}</p></li>
                     </div>
-                    <div v-else>
+                    <div id="noCategories">
                         <li><p style="font-weight: bold;">Categories:</p></li>
-                        <li><p style="font-weight: lighter;"> no categories found</p></li>
+                        <li><p style="font-weight: lighter;"> undefined</p></li>
                     </div>
                         
                     </ul>
@@ -75,6 +75,10 @@ export default {
         if (logoURL.includes('google')) {
             logoURL = '/google.png'
         }
+        if (this.tracker.categories.length == 0) {
+            document.getElementById("noCategories").style.display = 'block';
+        }
+        console.log("Category: ", this.tracker.categories.length);
         return logoURL;
     }    
   }

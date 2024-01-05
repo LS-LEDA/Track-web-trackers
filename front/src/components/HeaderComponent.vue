@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div id="header">
         <SearchBarComponent />
         <div class="toggle-container"><ThemeToggleComponent/></div>
     </div>
@@ -16,25 +16,14 @@ export default {
 
 
 <style scoped>
-.header {
+#header {
     background-image: conic-gradient(at right center, rgb(183, 199, 226), rgb(24, 42, 87),rgb(17, 35, 78));
-    height: 80px;
+    height: 60px;
     width: 100%;
     display: flex;
-    align-items:initial;
+    align-items: center;
 }
 
-.search-bar-container {
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.search-bar {
-    margin-top: auto;
-    margin-bottom: auto;
-}
 .toggle-container {
     float: left;
     margin-top: auto;
