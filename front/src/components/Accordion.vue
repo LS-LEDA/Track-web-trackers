@@ -1,7 +1,7 @@
 <template>
     <div class="accordion" @click="toggleAccordion">
         <img :src="image" alt="Accordion image" class="accordion-img" />
-        <h2 class="accordion-title">{{ title }}</h2>
+        <h2 class="accordion-title txt">{{ title }}</h2>
         <span class="accordion-state-icon" :class="{ 'rotate': isOpen }">&#9660;</span>
     </div>
     <div v-show="isOpen" class="accordion-content">
@@ -18,8 +18,7 @@ export default {
     },
     data() {
         return {
-            isOpen: false,
-            language: 'es'
+            isOpen: false
         };
     },
     methods: {
@@ -31,7 +30,7 @@ export default {
 
 </script>
 
-<style lang="scss" scoped> /**scoped vol dir que les regles en auqets style sol s'apliquen aquí */
+<style lang="scss"> /**scoped vol dir que les regles en auqets style sol s'apliquen aquí */
 * {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

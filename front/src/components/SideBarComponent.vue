@@ -3,7 +3,7 @@
         Toggle Sidebar
     </button>
     <div class="sidebar" :class="{ 'sidebar-open': isOpen }">
-        <Accordion image="/search.svg" title="">
+        <Accordion image="/search.svg" title="strings[language].customize">
           <ul>
             <li>Elemento 1</li>
             <li>Elemento 2</li>
@@ -13,29 +13,29 @@
     </div>
 </template>
   
-  <script>
-import Accordion from './Accordion.vue';
-//import strings from '../assets/strings.js';
+<script>
+  import Accordion from './Accordion.vue';
 
   export default {
     data() {
         return {
-            isOpen: false,
+          isOpen: false,
+          language: 'en'
         };
     },
     methods: {
         toggleSidebar() {
-            this.isOpen = !this.isOpen;
+          this.isOpen = !this.isOpen;
         },
     },
     components: { Accordion }
-};
-  </script>
+  };
+</script>
   
-  <style scoped>
+  <style>
 
   :root {
-    --sidebar-position: 0;
+    --sidebar-position: 1;
     --background-colour: #3498db;
   }
   .sidebar {
