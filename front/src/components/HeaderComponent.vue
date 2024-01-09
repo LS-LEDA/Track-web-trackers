@@ -38,7 +38,7 @@ export default {
 
 .toggle-container {
     float: left;
-    margin-top: auto;
-    margin-bottom: auto;
+    align-items: center;
+    margin-left: 10px;
 }
 </style>
