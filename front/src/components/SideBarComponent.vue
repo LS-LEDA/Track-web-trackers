@@ -3,23 +3,33 @@
         Toggle Sidebar
     </button>
     <div class="sidebar" :class="{ 'sidebar-open': isOpen }">
-        
+        <Accordion image="/search.svg" title="">
+          <ul>
+            <li>Elemento 1</li>
+            <li>Elemento 2</li>
+            <li>Elemento 3</li>
+          </ul>
+        </Accordion>
     </div>
 </template>
   
   <script>
+import Accordion from './Accordion.vue';
+//import strings from '../assets/strings.js';
+
   export default {
     data() {
-      return {
-        isOpen: false,
-      };
+        return {
+            isOpen: false,
+        };
     },
     methods: {
-      toggleSidebar() {
-        this.isOpen = !this.isOpen;
-      },
+        toggleSidebar() {
+            this.isOpen = !this.isOpen;
+        },
     },
-  };
+    components: { Accordion }
+};
   </script>
   
   <style scoped>

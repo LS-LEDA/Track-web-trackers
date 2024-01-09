@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import { strings } from '../assets/strings';
 
 export default {
     props: {
