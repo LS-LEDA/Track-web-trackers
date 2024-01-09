@@ -7,7 +7,7 @@
       <div class="title-container">
         <h1 class="header-title" :style="containerSyles">Project Web Tracker</h1>
       </div>
-      <SearchBarComponent class="search-bar"/>
+      <SearchBarComponent style="margin-top: 50vh; margin-left: 40vw;"/>
     </div>
   </div>
 </template>
@@ -53,6 +53,7 @@ export default {
 * {
   font-family: 'Trebuchet MS';
 }
+
 
 .background {
   width: 100%;

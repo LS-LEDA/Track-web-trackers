@@ -3,7 +3,7 @@
         <input type="text" placeholder="search site" name="urlToAnalyse" id="urlToAnalyse"
             v-model="urlToAnalyse" />
         <button type="submit">
-            <img src="/search.svg" alt="search button" />
+            <img class="flat-icon" src="/search.svg" alt="search button" />
         </button>
     </form>
 </template>

@@ -3,6 +3,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="640" height="640" viewBox="0 0 640 640" xml:space="preserve">
 <desc>Created with Fabric.js 5.3.0</desc>
 <defs>
+<linearGradient id="hoverGradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100%" y2="0">
+            <stop offset="0%" style="stop-color:#F5DFFC;stop-opacity: 1"/>
+            <stop offset="49.877400271034155%" style="stop-color:#DBAAFF;stop-opacity: 1"/>
+            <stop offset="100%" style="stop-color:#8883E0;stop-opacity: 1"/>
+        </linearGradient>
+
+        <linearGradient id="hoverGradient2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100%" y2="0">
+            <stop offset="0%" style="stop-color:#A2CDFF;stop-opacity: 1"/>
+            <stop offset="50%" style="stop-color:#366ABB;stop-opacity: 1"/>
+            <stop offset="100%" style="stop-color:#0F4A98;stop-opacity: 1"/>
+        </linearGradient>
+
+        <linearGradient id="hoverGradient3" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100%" y2="0">
+            <stop offset="0%" style="stop-color:#88CBFA;stop-opacity: 1"/>
+            <stop offset="50%" style="stop-color:#5A81BF;stop-opacity: 1"/>
+            <stop offset="100%" style="stop-color:#366ABB;stop-opacity: 1"/>
+        </linearGradient>
 </defs>
 <g transform="matrix(1.7259611659 1.7259611659 -0.5804437959 0.5804437959 359.7135193029 247.9195364258)" id="ZHHG8TuE6qmZyLliFMhE7"  >
 <linearGradient id="SVGID_2437_0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -49.75491 -49.6736120114)"  x1="73.5164622524324" y1="60.50862067510869" x2="-0.035356561333315994" y2="56.642499893400384">
