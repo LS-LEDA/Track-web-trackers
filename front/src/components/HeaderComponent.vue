@@ -1,17 +1,20 @@
 <template>
     <div id="header">
-        <img id="header-logo" src="/main-logo.svg"/>
+        <LogoComponent/>
         <SearchBarComponent />
         <div class="toggle-container"><ThemeToggleComponent/></div>
+        <SideBarComponent/>
     </div>
 </template>
 
 <script>
 import SearchBarComponent from './SearchBarComponent.vue';
 import ThemeToggleComponent from './ThemeToggleComponent.vue'
+import SideBarComponent from "./SideBarComponent.vue";
+import LogoComponent from './LogoComponent.vue';
 export default {
     name: "Header",
-    components: { SearchBarComponent, ThemeToggleComponent },
+    components: { SearchBarComponent, ThemeToggleComponent, SideBarComponent, LogoComponent },
 }
 </script>
 
